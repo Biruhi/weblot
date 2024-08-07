@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Controls the layout on mobile browsers.-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- To refresh the page every 30 seconds -->
+	<!-- <meta http-equiv="refresh" content="30"> -->
+
+	<title>My first Website</title>
+	<link rel="stylesheet"  href="intro.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<img src="images/logo.png" alt="" class="logo">
+		<ul id="menu-links">
+			<li>Home</li>
+			<li>Services</li>
+			<li>Projects</li>
+			<li>About Us</li>
+		</ul>
+		<button class="nav-btn">Get Started <img src="images/arrow-white.png" alt=""></button>
+		<img src="images/menu.png" alt="" class="menu-icon" onclick="toogleMenu()">
+	</nav>
+	<div class="header">
+		<div class="header-content">
+			<h1><span>FREE</span><br><span>LANCER</span></h1>
+			<div class="btn-container">
+				<button class="btn-dark">Request Call Back <img src="images/phone.png" alt=""></button>
+				<button class="btn-light">Know More <img src="images/arrow-black.png" alt=""></button>
+			</div>
+			<p><strong>Biruhi Tesfaye</strong> is a passionate web developer and scraper. On the other hand, <strong>Addisalem Geta </strong><mark>is very lazy.</mark></p>
+		</div>
+		<img src="images/user.png" alt="" class="user-img">
+
+		<!-- Embed YouTube Video -->
+
+	<div class="youtubel">
+		<iframe src="https://www.youtube.com/embed/UMaZG1V2-t8?autoplay=0&mute=1&controls=1&vq=tiny" width="500" height="300" class = "iframee" title="New ethio orthodox Timket mezmur 2020: #Limita kedegesh(ልምጣ ከደጅሽ) Zemare Yegerem Degene" frameborder="0" allowfullscreen>
+    	
+	    </iframe> 
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	    <button id="lotto">Click Here to Watch and Get Your lottory number</a></button>
+	    <a href="https://youtu.be/03quYts5dIQ" id = "newlink" class="youtubeta">
+	    <p id="emptyp"></p> 
+	    
+	</div>
+	</div>
+	<br>
+	<br>
+	
+
+    <br>
+	<br>
+    
+    
+
+
+<script>
+	let navbar = document.querySelector('nav');
+	let menuLinks = document.getElementById('menu-links');
+	let randomn = document.getElementById('lotto');
+	let emptypa = document.getElementById('emptyp');
+
+	function toogleMenu(){
+		menuLinks.classList.toggle('show-menu');
+	}
+
+	window.onscroll = function(){
+		if(window.scrollY > 0){
+			navbar.style.background = '#eefff9';
+		} else{
+			navbar.style.background = 'transparent';
+		}
+	}
+
+
+	let hasGenerated = false;
+
+	function generateRn(){
+
+		if (hasGenerated) return;
+
+		const randomNumber = Math.random();
+	    document.getElementById('emptyp').textContent = "Your lottoery number is: " + randomNumber;
+
+	    hasGenerated = true;
+	}
+
+	let opened = false;
+
+	function linkopen(){
+
+		if (opened) return;
+			const link = document.getElementById('newlink').href;
+	        window.open(link, '_blank');
+
+	        opened = true;
+
+	        setTimeout(function() {
+	           window.location.href = 'https://www.google.com';
+	        }, 10000);
+			}	
+	document.getElementById('lotto').addEventListener('click', function() {
+					
+			generateRn();
+
+	        linkopen()
+			
+	});
+
+	function refreshPage() {
+            window.location.reload(); // Reload the current page
+        }
+
+    function scheduleRefresh() {
+            const now = new Date();
+            const delay = 10000; // 10 seconds in milliseconds
+
+            // Get the current UTC time in milliseconds
+            const nowUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 
+                now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
+
+            // Calculate the next refresh time in UTC
+            const nextRefresh = Math.ceil(nowUTC / delay) * delay;
+
+            // Calculate the delay until the next exact refresh interval
+            const delayUntilNextRefresh = nextRefresh - nowUTC;
+
+            // Set a timeout for the next exact interval
+            setTimeout(function() {
+                refreshPage(); // Refresh the page
+                setInterval(refreshPage, delay); // Continue to refresh every 10 seconds
+            }, delayUntilNextRefresh);
+        }
+
+        // Call the function to schedule the refresh
+        scheduleRefresh();
+
+</script>
+</body>
+</html>
